@@ -1,11 +1,9 @@
-.SUFFIXES:
 .POSIX:
+.SUFFIXES:
 
-AR      = ar
 FC      = gfortran
 FFLAGS  = -O3 -ffast-math
-LDLAGS  =
-LDLIBS  =
+AR      = ar
 ARFLAGS = rcs
 TARGET  = liblucifer.a
 OBJ     = lucifer.o
@@ -21,7 +19,7 @@ $(TARGET):
 	$(AR) $(ARFLAGS) $(TARGET) $(OBJ)
 
 $(TEST): $(TARGET)
-	$(FC) $(FFLAGS) $(LDFLAGS) -o $(TEST) test/luctest.f $(TARGET) $(LDLIBS)
+	$(FC) $(FFLAGS) -o $(TEST) test/luctest.f $(TARGET)
 
 clean:
 	if [ `ls -1 *.o 2>/dev/null | wc -l` -gt 0 ]; then rm *.o; fi
